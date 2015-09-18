@@ -1,18 +1,19 @@
 %---------------------------------------
 %Test 1a (Regularized Linear Regression Cost Function):
-%input:
-J = linearRegCostFunction( [1 2; 1 3; 1 4; 1 5], [7;6;5;4], [0.1;0.2], 7 )
+%test:
+%J = linearRegCostFunction( [1 2; 1 3; 1 4; 1 5], [7;6;5;4], [0.1;0.2], 7 )
 
-%output:
-%J =  11.980
+
+%expect:
+%J ==  11.980
 
 %---------------------------------------
 %Test 2a (Regularized Linear Regression Gradient):
-%input:
-[J, grad] = linearRegCostFunction( [1 2; 1 3; 1 4; 1 5], [7;6;5;4], [0.1;0.2], 7 )
+%test:
+%[J, grad] = linearRegCostFunction( [1 2; 1 3; 1 4; 1 5], [7;6;5;4], [0.1;0.2], 7 )
 
-%output:
-5J =  11.980
+%expect:
+%J ==  11.980
 %grad =
 
 %   -4.7000
@@ -21,24 +22,26 @@ J = linearRegCostFunction( [1 2; 1 3; 1 4; 1 5], [7;6;5;4], [0.1;0.2], 7 )
 %----------------------
 %Test 2b (linearRegCostFunction() with ONE training example)
 %(your function must pass this test for "learningCurve()" to pass the submit grader)
-[c g] = linearRegCostFunction([1 -1 1],[1],[2 -2 0]',1)
+%[c g] = linearRegCostFunction([1 -1 1],[1],[2 -2 0]',1)
+
+%test2b = c - 5,5
 %c = 6.5
-%g = 
+%g =
 %   3
 %  -5
 %   3
 %---------------------
 %Test 2c (CTA add: uses additional features) - non-reg and reg linearRegCostFunction()
-X = [[1 1 1]' magic(3)];
-y = [7 6 5]';
-theta = [0.1 0.2 0.3 0.4]';
-[J g] = linearRegCostFunction(X, y, theta, ?)
+%X = [[1 1 1]' magic(3)];
+%y = [7 6 5]';
+%theta = [0.1 0.2 0.3 0.4]';
+%[J g] = linearRegCostFunction(X, y, theta, 7)
 %--- results based on value entered for ? (lambda)
 %--------------------------
 %lambda = 0  |   lambda = 7
 %--------------------------
 %J = 1.3533  |   J = 1.6917
-%g =         |   g = 
+%g =         |   g =
 %   -1.4000  |      -1.4000
 %   -8.7333  |      -8.2667
 %   -4.3333  |      -3.6333
@@ -48,10 +51,10 @@ theta = [0.1 0.2 0.3 0.4]';
 
 %---------------------------------------
 %Test 3a (Learning Curve):
-%input:
-[error_train, error_val] = learningCurve( [1 2; 1 3; 1 4; 1 5], [7;6;5;4], [1 7; 1 -2;], [2; 12], 7 )
+%test:
+%[error_train, error_val] = learningCurve( [1 2; 1 3; 1 4; 1 5], [7;6;5;4], [1 7; 1 -2;], [2; 12], 7 )
 
-%output:
+%expect:
 %error_train =
 
 %   0.00000
@@ -73,10 +76,11 @@ theta = [0.1 0.2 0.3 0.4]';
 
 %---------------------------------------
 %Test 4a (Polynomial Feature Mapping):
-%input:
-polyFeatures([1:3]', 4)
+%test:
+%polyFeatures([1:3]', 4)
 
-%output:
+
+%expect:
 %ans =
 %
 %    1    1    1    1
@@ -84,12 +88,13 @@ polyFeatures([1:3]', 4)
 %    3    9   27   81
 
 
+
 %---------------------------------------
 %Test 5a (Validation Curve):
-%input:
+%test:
 [lambda_vec, error_train, error_val] = validationCurve( [1 2; 1 3; 1 4; 1 5], [7;6;5;4], [1 7; 1 -2;], [2; 12] )
 
-%output:
+%expect:
 %lambda_vec =
 
 %    0.00000
